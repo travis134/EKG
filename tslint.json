@@ -1,0 +1,14 @@
+{
+    "extends": [
+        "tslint:latest",
+        "tslint-config-prettier"
+    ],
+    "rules": {
+        "interface-name": [true, "never-prefix"],
+        "object-literal-sort-keys": false,
+        "max-line-length": [true, 120],
+        "ordered-imports": false,
+        "eofline": true,
+        "no-console": false
+    }
+}
