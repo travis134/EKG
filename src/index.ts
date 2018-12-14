@@ -17,6 +17,5 @@ export {
 export { LogRenderContext } from './RenderContext/LogRenderContext';
 export { CanvasRenderContext } from './RenderContext/CanvasRenderContext';
 
-export { Time } from './TimeKeeper/Time';
 export { TimeKeeper } from './TimeKeeper/TimeKeeper';
 export { RealTimeKeeper } from './TimeKeeper/RealTimeKeeper';

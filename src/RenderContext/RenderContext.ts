@@ -25,7 +25,14 @@ export interface LineStyle {
     shadowStyle?: ShadowStyle;
 }
 
+export interface TextStyle {
+    color: string;
+    font: string;
+    size: number;
+}
+
 export interface RenderContext {
     clearRect(origin: Coordinate, area: Area): void;
     drawLine(from: Coordinate, to: Coordinate, lineStyle: LineStyle): void;
+    drawText(at: Coordinate, text: string, textStyle: TextStyle): void;
 }

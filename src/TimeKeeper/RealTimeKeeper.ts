@@ -1,30 +1,31 @@
-import { Time } from './Time';
 import { TimeKeeper } from './TimeKeeper';
 
 export class RealTimeKeeper implements TimeKeeper {
+    private running: boolean;
     private startTimeMs: number;
     private currentTimeMs: number;
 
-    constructor(private time: Time, private running = false) {
-        this.startTimeMs = this.time.now();
-        this.currentTimeMs = this.time.now();
+    constructor(private nowMs: () => number) {
+        this.running = false;
+        this.startTimeMs = this.nowMs();
+        this.currentTimeMs = this.nowMs();
     }
 
-    public start(): void {
+    public start() {
         this.running = true;
     }
 
-    public stop(): void {
+    public stop() {
         this.running = false;
     }
 
-    public reset(): void {
-        this.startTimeMs = this.time.now();
-        this.currentTimeMs = this.time.now();
+    public reset() {
+        this.startTimeMs = this.nowMs();
+        this.currentTimeMs = this.nowMs();
     }
 
     public getElapsedMs(): number {
-        const now = this.time.now();
+        const now = this.nowMs();
 
         if (!this.running) {
             this.startTimeMs += now - this.currentTimeMs;

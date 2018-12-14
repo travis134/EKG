@@ -1,18 +1,24 @@
-import { RenderContext, Coordinate, Area, LineStyle } from './RenderContext';
+import { RenderContext, Coordinate, Area, LineStyle, TextStyle } from './RenderContext';
 
 export class LogRenderContext implements RenderContext {
-    public clearRect(origin: Coordinate, area: Area): void {
+    public clearRect(origin: Coordinate, area: Area) {
         const originString = this.stringifyCoordinate(origin);
         const areaString = this.stringifyArea(area);
 
         console.log(`clearRect origin: ${originString}, area: ${areaString}`);
     }
 
-    public drawLine(from: Coordinate, to: Coordinate, lineStyle: LineStyle): void {
+    public drawLine(from: Coordinate, to: Coordinate, lineStyle: LineStyle) {
         const fromString = this.stringifyCoordinate(from);
         const toString = this.stringifyCoordinate(to);
 
         console.log(`drawLine from: ${fromString}, to: ${toString}, color: ${lineStyle.color}`);
+    }
+
+    public drawText(at: Coordinate, text: string, textStyle: TextStyle) {
+        const atString = this.stringifyCoordinate(at);
+
+        console.log(`drawText at: ${atString}, text: ${text}, color: ${textStyle.font}`);
     }
 
     private stringifyCoordinate(coordinate: Coordinate) {

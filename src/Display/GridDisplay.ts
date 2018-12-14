@@ -2,17 +2,18 @@ import { Display } from './Display';
 import { RenderContext, Area, LineStyle, Origin } from '../RenderContext/RenderContext';
 
 export class GridDisplay implements Display {
+    // Constants for common EKG monitor properties
     private static readonly SecondsPerStrip = 6;
     private static readonly SquareSubdivision = 5;
+
+    // Styling
     private static readonly Color = 'Green';
     private static readonly Alpha = 1 / 8;
-
     private static readonly LargeGridLineStyle: LineStyle = {
         color: GridDisplay.Color,
         alpha: GridDisplay.Alpha,
         width: 2
     };
-
     private static readonly SmallGridLineStyle: LineStyle = {
         color: GridDisplay.Color,
         alpha: GridDisplay.Alpha,
@@ -23,12 +24,14 @@ export class GridDisplay implements Display {
     private smallSquareWidth: number;
 
     constructor(private renderContext: RenderContext, private area: Area) {
+        // Determine how big our squares are in pixels based on the area of the grid
         this.largeSquareWidth =
             this.area.width / GridDisplay.SecondsPerStrip / GridDisplay.SquareSubdivision;
         this.smallSquareWidth = this.largeSquareWidth / GridDisplay.SquareSubdivision;
     }
 
     public draw() {
+        // Draw both the large ans the small squares
         this.drawGrid(this.largeSquareWidth, GridDisplay.LargeGridLineStyle);
         this.drawGrid(this.smallSquareWidth, GridDisplay.SmallGridLineStyle);
     }
