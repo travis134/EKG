@@ -19,3 +19,5 @@ export { CanvasRenderContext } from './RenderContext/CanvasRenderContext';
 
 export { TimeKeeper } from './TimeKeeper/TimeKeeper';
 export { RealTimeKeeper } from './TimeKeeper/RealTimeKeeper';
+
+export { Monitor } from './Monitor';
