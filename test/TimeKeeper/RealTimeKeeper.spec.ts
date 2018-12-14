@@ -46,7 +46,7 @@ describe('RealTimeKeeper', () => {
 
     it('should return elapsed time 0 after reset', () => {
         realTimeKeeper.start();
-        nowMsValue = 6
+        nowMsValue = 6;
 
         realTimeKeeper.getElapsedMs();
         realTimeKeeper.reset();

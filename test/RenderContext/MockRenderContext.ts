@@ -1,4 +1,10 @@
-import { RenderContext, Coordinate, Area, LineStyle, TextStyle } from '../../src/RenderContext/RenderContext'
+import {
+    RenderContext,
+    Coordinate,
+    Area,
+    LineStyle,
+    TextStyle
+} from '../../src/RenderContext/RenderContext';
 
 export class MockRenderContext implements RenderContext {
     private _clearRectOriginValues: Coordinate[] = new Array<Coordinate>();

@@ -1,17 +1,17 @@
-import { expect } from 'chai'
+import { expect } from 'chai';
 
-import { LeadDisplay } from '../../src/Display/LeadDisplay'
-import { MockRenderContext } from '../RenderContext/MockRenderContext'
+import { LeadDisplay } from '../../src/Display/LeadDisplay';
+import { MockRenderContext } from '../RenderContext/MockRenderContext';
 import { MockLead } from '../Lead/MockLead';
-import { MockTimeKeeper } from '../TimeKeeper/MockTimeKeeper'
-import { Area, Origin } from '../../src/RenderContext/RenderContext'
+import { MockTimeKeeper } from '../TimeKeeper/MockTimeKeeper';
+import { Area, Origin } from '../../src/RenderContext/RenderContext';
 
 describe('LeadDisplay', () => {
     let leadDisplay: LeadDisplay;
     let mockRenderContext: MockRenderContext;
     let mockLead: MockLead;
     let mockTimeKeeper: MockTimeKeeper;
-    const area: Area = {width: 600, height: 300};
+    const area: Area = { width: 600, height: 300 };
 
     beforeEach(() => {
         mockRenderContext = new MockRenderContext();
@@ -19,12 +19,12 @@ describe('LeadDisplay', () => {
         mockTimeKeeper = new MockTimeKeeper();
         leadDisplay = new LeadDisplay(mockRenderContext, area, mockLead, mockTimeKeeper);
     });
-    
+
     it('should clear the entire area', () => {
         leadDisplay.clear();
 
-        const clearRectOrigin= mockRenderContext.clearRectOriginValues[0];
-        const clearReactArea= mockRenderContext.clearRectAreaValues[0];
+        const clearRectOrigin = mockRenderContext.clearRectOriginValues[0];
+        const clearReactArea = mockRenderContext.clearRectAreaValues[0];
 
         expect(clearRectOrigin).to.deep.equal(Origin);
         expect(clearReactArea).to.deep.equal(area);
@@ -52,8 +52,8 @@ describe('LeadDisplay', () => {
 
         const line1From = mockRenderContext.drawLineFromValues[0];
         const line1To = mockRenderContext.drawLineToValues[0];
-        expect(line1From).to.deep.equal({x: 0, y: 150});
-        expect(line1To).to.deep.equal({x: 100, y: 0});
+        expect(line1From).to.deep.equal({ x: 0, y: 150 });
+        expect(line1To).to.deep.equal({ x: 100, y: 0 });
 
         mockTimeKeeper.elapsedMsValue = 2000;
         mockLead.measureVoltageValue = -1;
@@ -61,8 +61,8 @@ describe('LeadDisplay', () => {
 
         const line2From = mockRenderContext.drawLineFromValues[1];
         const line2To = mockRenderContext.drawLineToValues[1];
-        expect(line2From).to.deep.equal({x: 100, y: 0});
-        expect(line2To).to.deep.equal({x: 200, y: 300});
+        expect(line2From).to.deep.equal({ x: 100, y: 0 });
+        expect(line2To).to.deep.equal({ x: 200, y: 300 });
     });
 
     it('should clear rect ahead of last rendered line segment', () => {
@@ -76,8 +76,8 @@ describe('LeadDisplay', () => {
 
         const clearRectOrigin = mockRenderContext.clearRectOriginValues[0];
         const clearRectArea = mockRenderContext.clearRectAreaValues[0];
-        expect(clearRectOrigin).to.deep.equal({x: 100, y: 0});
-        expect(clearRectArea).to.deep.equal({width: 40, height: 300});
+        expect(clearRectOrigin).to.deep.equal({ x: 100, y: 0 });
+        expect(clearRectArea).to.deep.equal({ width: 40, height: 300 });
     });
 
     it('should wrap x coordinates', () => {
@@ -117,7 +117,7 @@ describe('LeadDisplay', () => {
 
         const lineFrom = mockRenderContext.drawLineFromValues[0];
         const lineTo = mockRenderContext.drawLineToValues[0];
-        expect(lineFrom).to.deep.equal({x: 0, y: 0});
-        expect(lineTo).to.deep.equal({x: 100, y: 0});
+        expect(lineFrom).to.deep.equal({ x: 0, y: 0 });
+        expect(lineTo).to.deep.equal({ x: 100, y: 0 });
     });
 });
