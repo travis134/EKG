@@ -8,6 +8,9 @@
     "include": [
         "src/**/*.ts"
     ],
+    "exclude": [
+        "**/*.d.ts"
+    ],
     "reporter": [
         "text-summary"
     ],
