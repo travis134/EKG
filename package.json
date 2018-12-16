@@ -1,8 +1,9 @@
 {
-  "name": "ekg",
-  "version": "1.0.0",
+  "name": "ekg-monitor",
+  "version": "1.0.1",
   "description": "A digital EKG (heart monitor) renderer.",
-  "main": "dist/index.js",
+  "main": "dist/index",
+  "typings": "dist/index",
   "scripts": {
     "test": "nyc mocha --opts mocha.opts",
     "test:watch": "mocha --opts mocha.opts --watch",
@@ -10,7 +11,7 @@
     "prettier": "prettier --config .prettierrc --write {src,test}/**/*.ts",
     "clean": "./node_modules/.bin/rimraf dist",
     "build": "npm run clean && tsc",
-    "release": "npm run prettier && npm run lint && npm run test && npm run build"
+    "prepublishOnly": "npm run prettier && npm run lint && npm run test && npm run build"
   },
   "repository": {
     "type": "git",
@@ -42,5 +43,8 @@
     "tslint": "^5.11.0",
     "tslint-config-prettier": "^1.17.0",
     "typescript": "^3.2.2"
-  }
+  },
+  "files": [
+    "dist"
+  ]
 }
